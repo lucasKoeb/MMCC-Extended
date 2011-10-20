@@ -1,0 +1,19 @@
+library IEEE;
+use IEEE.std_logic_1164.all;
+
+use work.pack.all;
+package utils_pack is
+function log2_ceil(N: natural) return natural;
+
+end;
+package body pack is
+
+     function log2_ceil(N: natural) return natural is
+   begin
+      if N < 2 then
+         return 0;
+      else
+         return 1 + log2_ceil(N/2);
+      end if;
+   end;
+     end 
