@@ -1,0 +1,11 @@
+Falta fazer:
+1) unidadesembin.vhd, linha 65:
+
+if semaphores_table(to_integer(unsigned(sem_index))).sem_value > "0000000000" then
+
+   Como o valor da constante SEM_SIZE no momento é 9, temos 10 bits pro
+   valor dos semáforos, então eu comparei com 10 bits em zero ali.. mas
+   esse tamanho deveria ser ajustado automaticamente conforme a
+   constante SEM_SIZE muda.. não sei como fazer isso ainda.
+
+2) Testes
