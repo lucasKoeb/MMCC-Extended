@@ -10,7 +10,7 @@ package pack is
   constant SEM_V : sem_operation := "10";
   -- Semaphores Table
   constant NUM_SEM : integer := 1024;   -- Amount of available semaphores
-  constant SEM_SIZE : integer := 1;    -- Number of bits for each semaphore value
+  constant SEM_SIZE : integer := 9;    -- Number of bits for each semaphore value
   constant SEM_START_ADR : integer := 8200;  -- Initial addres for the semaphores
   
   -- Type signal on n bits
@@ -41,8 +41,9 @@ package pack is
   end component;
 
 -- Semaphores Table:
-type sem_type is array (0 to SEM_SIZE) of std_logic ;
-
+--type sem_type is array (0 to SEM_SIZE) of std_logic ;
+subtype sem_type is std_logic_vector(SEM_SIZE downto 0);
+  
 -- Table entry type
 type table_item is 
 record 
