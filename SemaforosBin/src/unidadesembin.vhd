@@ -30,6 +30,7 @@ architecture rtl of binary_semaphores is
   signal semaphores_table : table_type;
   signal operation : bus2;
   signal sem_index : index_register;
+  signal zero : std_logic_vector(SEM_SIZE downto 0):= (others => '0');
 begin
 
 process(clock)
@@ -62,7 +63,7 @@ begin
 
    if operation = SEM_P  then
      if semaphores_table(to_integer(unsigned(sem_index))).valid = '1' then
-       if semaphores_table(to_integer(unsigned(sem_index))).sem_value > "0000000000" then
+       if semaphores_table(to_integer(unsigned(sem_index))).sem_value > zero then
          semaphores_table(to_integer(unsigned(sem_index))).sem_value <= sem_type(unsigned(semaphores_table(to_integer(unsigned(sem_index))).sem_value)-1);
          data_out(31 downto 0) <= (others => '0');
        else
